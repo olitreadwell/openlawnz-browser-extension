@@ -25,7 +25,7 @@
 - no labels, no assignees, no accepted/approved signals
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
-- 2026-09-06 self-found gap (GraphQL escaping) — pr-opened — formatQuery interpolates title/section into a GraphQL string literal without escaping; a title containing a double quote produces a Syntax Error from the OpenLaw API (verified live). Deduped: no upstream issue/PR covers it.
+- 2026-09-06 self-found gap (GraphQL escaping) — pr-opened — formatQuery interpolates title/section into a GraphQL string literal without escaping; a title containing a double quote produces a Syntax Error from the OpenLaw API (verified live). Deduped: no upstream issue/PR covers it. Fork PR #1 (olitreadwell/openlawnz-browser-extension/pull/1), branch fix/escape-graphql-title.
 
 ## Mined gaps (discovered, not yet attempted)
 - 2026-09-06 clean-code/robustness: formatQuery does not escape `\` or `"` in legislationTitle/section before interpolation. Repro: title `Te "Ture" Whenua Maori Act 1993` -> API returns `Syntax Error: Expected ":", found String`. Expected: query stays valid. Proposed fix: escape backslash and double-quote in both interpolated values. Dedupe: no upstream issue/PR. status: attempted
