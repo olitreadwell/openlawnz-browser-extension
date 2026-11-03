@@ -40,10 +40,15 @@ function makeRow(data) {
 	return tr;
 }
 
+const escapeGraphQLString = (value) =>
+	value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+
 const formatQuery = (legislationTitle, section) => {
+	const title = escapeGraphQLString(legislationTitle);
+	const sectionNumber = escapeGraphQLString(section);
 	return `{
-		legislation(title: "${legislationTitle}") {
-			legislationToCases(condition: {section: "${section}"}) {
+		legislation(title: "${title}") {
+			legislationToCases(condition: {section: "${sectionNumber}"}) {
 				caseId,
 				count,
 				section,
